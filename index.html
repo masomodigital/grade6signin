@@ -43,13 +43,27 @@
             margin-top: 20px;
         }
 
-        input {
+        input[type="text"], input[type="password"] {
             margin-bottom: 10px;
         }
 
-        /* Added styles for specific elements */
-        h1 {
-            color: red;
+        /* Submit button styling */
+        input[type="submit"] {
+            background-color: green;
+            color: white;
+            padding: 5px 15px;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        /* Copy Password button styling */
+        #copyPasswordBtn {
+            background-color: red;
+            color: white;
+            padding: 5px 15px;
+            border: none;
+            cursor: pointer;
         }
 
         strong {
@@ -69,7 +83,12 @@
         <p><strong>Name:</strong> <input name="name" type="text" required /></p>
         <p><strong>Password:</strong> <input name="password" type="password" required /></p>
         <input type="submit" value="Submit" />
+        <button type="button" id="copyPasswordBtn" onclick="copyPassword()">Copy Password</button>
     </form>
+
+    <br><br> <!-- Added space to ensure marquee is one line below the buttons -->
+
+    <marquee direction="scroll">Welcome to Grade 6! You will be redirected to the Grade 6 Library. Any question? Call 0715399449 for assistance. Thank You!</marquee>
 
     <script>
         function validateForm() {
@@ -86,8 +105,17 @@
             window.location.href = "https://sites.google.com/view/forgrade-6/home";
             return false;
         }
-    </script>
 
-    <marquee direction="scroll">Welcome to Grade 6! You will be redirected to the Grade 6 Library. Any question? Call 0715399449 for assistance. Thank You!</marquee>
+        function copyPassword() {
+            var password = "23406636";
+            var textarea = document.createElement("textarea");
+            textarea.value = password;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textarea);
+            alert("Password '23406636' has been copied to the clipboard!");
+        }
+    </script>
 </body>
 </html>
